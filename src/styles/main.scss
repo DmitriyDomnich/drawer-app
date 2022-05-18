@@ -1,0 +1,18 @@
+@import "bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --brush: url("../assets/cursors/brush.svg") 1 20, pointer;
+  --eraser: url("../assets/cursors/eraser-fill.svg") 1 20, move;
+  --square: url("../assets/cursors/square.svg") 1 20, move;
+  --circle: url("../assets/cursors/circle.svg") 1 20, move;
+}
+
+html,
+body {
+  height: 100%;
+}
+canvas {
+  cursor: var(--brush);
+  height: 75vh;
+}

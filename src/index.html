@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drawer App</title>
+  </head>
+  <body class="bg-dark">
+    <header class="container bg-light p-3 rounded-bottom">
+      <div class="row align-items-baseline">
+        <div class="col-1" style="min-width: 90px">
+          <input
+            type="color"
+            name="brush-color"
+            value="#C11515"
+            id="brush-color"
+            class="form-control"
+          />
+        </div>
+        <div class="col-auto">
+          <input
+            type="number"
+            name="brush-width"
+            id="brush-width"
+            class="form-control"
+            min="1"
+            max="30"
+            value="10"
+            onblur="!this.value || this.value == 0 ? this.value = 1 : this.value = this.value"
+          />
+        </div>
+        <div class="col-auto">
+          <button
+            id="brush-btn"
+            data-bs-toggle="button"
+            data-state-toggle
+            class="btn btn-outline-secondary active"
+          >
+            <i class="bi bi-brush"></i>
+          </button>
+        </div>
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-state-toggle
+            data-bs-toggle="button"
+            id="eraser-btn"
+          >
+            <i class="bi bi-eraser"></i>
+          </button>
+        </div>
+        <div class="col-auto dropdown">
+          <button
+            id="figure-insert-btn"
+            type="button"
+            data-state-toggle
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            class="btn btn-outline-secondary dropdown-toggle"
+          >
+            <img src="images/abstract-shape.png" alt="shape" />
+          </button>
+          <ul
+            class="dropdown-menu"
+            style="min-width: auto"
+            aria-labelledby="figure-insert-btn"
+          >
+            <li class="w-auto">
+              <button
+                data-state-toggle
+                id="rectangle-btn"
+                class="dropdown-item"
+                type="button"
+              >
+                <i class="bi bi-aspect-ratio"></i>
+              </button>
+            </li>
+            <li class="w-auto">
+              <button
+                data-state-toggle
+                id="ellipse-btn"
+                class="dropdown-item"
+                type="button"
+              >
+                <i class="bi bi-circle"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="col-auto ms-auto">
+          <button
+            id="redraw-btn"
+            title="<u>Redraw</u></br><b>ctrl</b> + <b>R</b>"
+            data-bs-html="true"
+            data-bs-placement="bottom"
+            data-bs-toggle="tooltip"
+            class="btn me-3 btn-outline-secondary"
+          >
+            <i class="bi bi-hourglass"></i>
+          </button>
+          <button
+            id="history-back-btn"
+            title="<u>Previous</u></br><b>ctrl</b> + <b>Z</b>"
+            data-bs-html="true"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            class="btn btn-outline-secondary"
+          >
+            <i class="bi bi-arrow-counterclockwise"></i>
+          </button>
+          <button
+            id="history-forward-btn"
+            title="<u>Next</u></br><b>ctrl</b> + <b>shift</b> + <b>Z</b>"
+            data-bs-html="true"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            class="btn btn-outline-secondary"
+          >
+            <i class="bi bi-arrow-clockwise"></i>
+          </button>
+          <button
+            id="clear-canvas-btn"
+            title="<u>Clear</u></br><b>ctrl</b> + <b>L</b>"
+            data-bs-html="true"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            data-bs-toggle="tooltip"
+            class="ms-2 btn btn-outline-secondary"
+          >
+            <i class="bi bi-easel"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="container position-relative">
+      <canvas
+        id="canvas"
+        style="z-index: 1"
+        class="mx-auto my-5 d-block col-8 border border-5 border-warning rounded-3"
+      ></canvas>
+      <canvas
+        id="helper-canvas"
+        style="z-index: -1"
+        class="position-absolute top-0 start-50 translate-middle-x"
+      ></canvas>
+    </div>
+  </body>
+</html>
